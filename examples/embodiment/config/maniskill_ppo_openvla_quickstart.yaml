@@ -122,7 +122,7 @@ rollout:
   pipeline_stage_num: 2
 
   model:
-    model_path: "/path/to/model/openvla-7b-rlvla-warmup/"
+    model_path: "/root/autodl-fs/openvla-7b-rlvla-warmup/"
     precision: ${actor.model.precision}
 
 actor:
@@ -140,13 +140,13 @@ actor:
 
   # Override the default values in model/openvla
   model:
-    model_path: "/path/to/model/openvla-7b-rlvla-warmup/"
+    model_path: "/root/autodl-fs/openvla-7b-rlvla-warmup//"
     add_value_head: True
     is_lora: True
 
   tokenizer:
     tokenizer_type: "HuggingFaceTokenizer"
-    tokenizer_model: "/path/to/model/openvla-7b-rlvla-warmup/"
+    tokenizer_model: "/root/autodl-fs/openvla-7b-rlvla-warmup/"
     extra_vocab_size: 421
     use_fast: False
     trust_remote_code: True
@@ -164,7 +164,7 @@ actor:
   # Override the default values in training_backend/fsdp
   fsdp_config:
     strategy: "fsdp"
-    gradient_checkpointing: False
+    gradient_checkpointing: True
     mixed_precision:
       param_dtype: ${actor.model.precision}
       reduce_dtype: ${actor.model.precision}
